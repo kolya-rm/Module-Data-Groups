@@ -1,11 +1,11 @@
 function calculateMean(list) {
     let total = 0;
 
-    total += list[0];
-    total += list[1];
-    total += list[2];
+    for (const item of list) {
+        total += item;
+    }
 
-    return total / 3;
+    return total / list.length;
 }
 
 module.exports = calculateMean
