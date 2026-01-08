@@ -10,11 +10,12 @@ function calculateMedian(list) {
     return null;
   }
   
-  const numberList = list.filter((item) => typeof item === "number");
+  let numberList = list.filter((item) => typeof item === "number");
 
   if (numberList.length === 0) {
     return null;
   }
+  numberList = numberList.sort((a, b) => a - b);
   
   const middleIndex = Math.floor(numberList.length / 2);
   const listLength = numberList.length;
@@ -29,4 +30,7 @@ function calculateMedian(list) {
   return median;
 }
 
+calculateMedian(
+  [3, 1, 2]
+)
 module.exports = calculateMedian;
