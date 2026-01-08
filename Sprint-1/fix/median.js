@@ -11,26 +11,18 @@ function calculateMedian(list) {
   }
   
   let numberList = list.filter((item) => typeof item === "number");
-
-  if (numberList.length === 0) {
+  const numberListLength = numberList.length;
+  
+  if (numberListLength === 0) {
     return null;
   }
   numberList = numberList.sort((a, b) => a - b);
   
-  const middleIndex = Math.floor(numberList.length / 2);
-  const listLength = numberList.length;
-  let median;
+  const middleIndex = Math.floor(numberListLength / 2);
   
-  if (listLength % 2 === 0) {
-    median = (numberList[middleIndex - 1] + numberList[middleIndex]) / 2;
-  } else {
-    median = numberList[middleIndex];
-  }
-  
-  return median;
+  return numberListLength % 2 === 0 ? 
+    (numberList[middleIndex -1] + numberList[middleIndex]) / 2 :
+    numberList[middleIndex];
 }
 
-calculateMedian(
-  [3, 1, 2]
-)
 module.exports = calculateMedian;
