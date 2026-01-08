@@ -17,14 +17,26 @@ const findMax = require("./max.js");
 // Then it should return -Infinity
 // Delete this test.todo and replace it with a test.
 test("given an empty array, returns -Infinity", () => {
-    input = [];
-    expected = -Infinity;
-    expect(findMax(input)).toEqual(expected);
+  input = [];
+  expected = -Infinity;
+    
+  expect(findMax(input)).toEqual(expected);
 });
 
 // Given an array with one number
 // When passed to the max function
 // Then it should return that number
+describe("Find max in an array with the single element", () => {
+  [
+    { input: [-136], expected: -136 },
+    { input: [-1], expected: -1 },
+    { input: [0], expected: 0 },
+    { input: [3], expected: 3 },
+    { input: [2354], expected: 2354 },
+  ].forEach(({input, expected}) => 
+    it(`Returns max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
+  );
+});
 
 // Given an array with both positive and negative numbers
 // When passed to the max function
