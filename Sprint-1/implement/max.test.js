@@ -49,13 +49,24 @@ describe("Find max in array with negative and positive values", () => {
     { input: [-2, 3, -4, 1, -5, -10], expected: 3 },
     { input: [14, 7, 8, -3, -34], expected: 14 },
   ].forEach(({input, expected}) =>
-    it(`Return max for[${input}]`, () => expect(findMax(input)).toEqual(expected))
+    it(`Return max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
   );
 });
 
 // Given an array with just negative numbers
 // When passed to the max function
 // Then it should return the closest one to zero
+describe("Find max in array with negative values", () => {
+  [
+    { input: [-1, -4, -2], expected: -1 },
+    { input: [-10, -3, -19, -24, -102], expected: -3 },
+    { input: [-6 , -2], expected: -2 },
+    { input: [-9, -4, -3, -1], expected: -1 },
+    { input: [-19, -42, -2, -26, -4], expected: -2},
+  ].forEach(({input, expected}) =>
+    it(`Return max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
+  );
+});
 
 // Given an array with decimal numbers
 // When passed to the max function
