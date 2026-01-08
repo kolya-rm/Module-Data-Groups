@@ -10,14 +10,20 @@ function calculateMedian(list) {
     return null;
   }
   
-  const middleIndex = Math.floor(list.length / 2);
-  const listLength = list.length;
+  const numberList = list.filter((item) => typeof item === "number");
+
+  if (numberList.length === 0) {
+    return null;
+  }
+  
+  const middleIndex = Math.floor(numberList.length / 2);
+  const listLength = numberList.length;
   let median;
   
   if (listLength % 2 === 0) {
-    median = (list[middleIndex - 1] + list[middleIndex]) / 2;
+    median = (numberList[middleIndex - 1] + numberList[middleIndex]) / 2;
   } else {
-    median = list[middleIndex];
+    median = numberList[middleIndex];
   }
   
   return median;
