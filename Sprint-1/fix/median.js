@@ -7,7 +7,14 @@
 
 function calculateMedian(list) {
   const middleIndex = Math.floor(list.length / 2);
-  const median = list[middleIndex];
+  const listLength = list.length;
+  let median;
+  
+  if (listLength % 2 === 0) {
+    median = (list[middleIndex - 1] + list[middleIndex]) / 2;
+  } else {
+    median = list[middleIndex];
+  }
   
   return median;
 }
