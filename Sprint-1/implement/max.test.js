@@ -49,7 +49,7 @@ describe("Find max in array with negative and positive values", () => {
     { input: [-2, 3, -4, 1, -5, -10], expected: 3 },
     { input: [14, 7, 8, -3, -34], expected: 14 },
   ].forEach(({input, expected}) =>
-    it(`Return max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
+    it(`Returns max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
   );
 });
 
@@ -64,7 +64,7 @@ describe("Find max in array with negative values", () => {
     { input: [-9, -4, -3, -1], expected: -1 },
     { input: [-19, -42, -2, -26, -4], expected: -2},
   ].forEach(({input, expected}) =>
-    it(`Return max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
+    it(`Returns max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
   );
 });
 
@@ -74,19 +74,28 @@ describe("Find max in array with negative values", () => {
 describe("Find max in array with decimal values", () => {
   precision = 10 ** -3,
   [
-    {input: [0.1, 0.2, 0.3], expected: 0.3},
-    {input: [-0.1, -0.2, -0.3], expected: -0.1},
-    {input: [-2.4, 0.1, -1.3, -4], expected: 0.1},
-    {input: [2.7, -5.4, -8.2, 1.34, -3.21], expected: 2.7},
-    {input: [-8.0, 7.5, 9.0 -10.4, 7.7, -19.2, 8.9], expected: 9.0},
+    { input: [0.1, 0.2, 0.3], expected: 0.3 },
+    { input: [-0.1, -0.2, -0.3], expected: -0.1 },
+    { input: [-2.4, 0.1, -1.3, -4], expected: 0.1 },
+    { input: [2.7, -5.4, -8.2, 1.34, -3.21], expected: 2.7 },
+    { input: [-8.0, 7.5, 9.0, -10.4, 7.7, -19.2, 8.9], expected: 9.0 },
   ].forEach(({input, expected}) => 
-    it(`Return max for [${input}]`, () => expect(findMax(input)).toBeCloseTo(expected, precision))
+    it(`Returns max for [${input}]`, () => expect(findMax(input)).toBeCloseTo(expected, precision))
   );
 });
 
 // Given an array with non-number values
 // When passed to the max function
 // Then it should return the max and ignore non-numeric values
+describe("Find max in array with non-numeric values", () => {
+  [
+    { input: [1, null, undefined, "Some string"], expected:  1},
+    { input: [null, null, "six", 4, undefined, true, 5, null], expected: 5 },
+    { input: [3, -1, null, -4, 1], expected:  3},
+  ].forEach(({input, expected}) =>
+    it(`Returns max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
+  );
+});
 
 // Given an array with only non-number values
 // When passed to the max function
