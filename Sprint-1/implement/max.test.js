@@ -71,6 +71,18 @@ describe("Find max in array with negative values", () => {
 // Given an array with decimal numbers
 // When passed to the max function
 // Then it should return the largest decimal number
+describe("Find max in array with decimal values", () => {
+  precision = 10 ** -3,
+  [
+    {input: [0.1, 0.2, 0.3], expected: 0.3},
+    {input: [-0.1, -0.2, -0.3], expected: -0.1},
+    {input: [-2.4, 0.1, -1.3, -4], expected: 0.1},
+    {input: [2.7, -5.4, -8.2, 1.34, -3.21], expected: 2.7},
+    {input: [-8.0, 7.5, 9.0 -10.4, 7.7, -19.2, 8.9], expected: 9.0},
+  ].forEach(({input, expected}) => 
+    it(`Return max for [${input}]`, () => expect(findMax(input)).toBeCloseTo(expected, precision))
+  );
+});
 
 // Given an array with non-number values
 // When passed to the max function
