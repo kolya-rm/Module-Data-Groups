@@ -41,6 +41,17 @@ describe("Find max in an array with the single element", () => {
 // Given an array with both positive and negative numbers
 // When passed to the max function
 // Then it should return the largest number overall
+describe("Find max in array with negative and positive values", () => { 
+  [
+    { input: [-1, 1], expected: 1 },
+    { input: [-13, -6, 1, 3], expected: 3 },
+    { input: [-4, 10, 21, 14, 3], expected: 21 },
+    { input: [-2, 3, -4, 1, -5, -10], expected: 3 },
+    { input: [14, 7, 8, -3, -34], expected: 14 },
+  ].forEach(({input, expected}) =>
+    it(`Return max for[${input}]`, () => expect(findMax(input)).toEqual(expected))
+  );
+});
 
 // Given an array with just negative numbers
 // When passed to the max function
