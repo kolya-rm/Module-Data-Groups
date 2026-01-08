@@ -89,9 +89,9 @@ describe("Find max in array with decimal values", () => {
 // Then it should return the max and ignore non-numeric values
 describe("Find max in array with non-numeric values", () => {
   [
-    { input: [1, null, undefined, "Some string"], expected:  1},
+    { input: [1, null, undefined, "Some string"], expected:  1 },
     { input: [null, null, "six", 4, undefined, true, 5, null], expected: 5 },
-    { input: [3, -1, null, -4, 1], expected:  3},
+    { input: [3, -1, null, -4, 1], expected:  3 },
   ].forEach(({input, expected}) =>
     it(`Returns max for [${input}]`, () => expect(findMax(input)).toEqual(expected))
   );
@@ -100,3 +100,12 @@ describe("Find max in array with non-numeric values", () => {
 // Given an array with only non-number values
 // When passed to the max function
 // Then it should return the least surprising value given how it behaves for all other inputs
+describe("Returns -Infinity for array with only non-numeric values", () => {
+  [
+    { input: [null], expected: -Infinity },
+    { input: [null, "seven", undefined], expected: -Infinity },
+    { input: [null, null, true, {name: "John", surname: "Dow"}, [0, -2, 4]], expected: -Infinity },
+  ].forEach(({input, expected}) => 
+    it(`Returns -Infinity for [${input}]`, () => expect(findMax(input)).toEqual(expected))
+  );
+});

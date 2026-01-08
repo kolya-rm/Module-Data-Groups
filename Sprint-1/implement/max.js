@@ -1,14 +1,14 @@
 function findMax(elements) {
     const numberElements = elements.filter(item => typeof item === "number");
-    const elementCount = numberElements.length;
+    const numberCount = numberElements.length;
 
-    if (elementCount === 0) {
+    if (numberCount === 0) {
         return -Infinity;
     }
 
     let max = numberElements[0];
 
-    for(let i = 1; i < elementCount; i++) {
+    for(let i = 1; i < numberCount; i++) {
         if (numberElements[i] > max) {
             max = numberElements[i];
         }
