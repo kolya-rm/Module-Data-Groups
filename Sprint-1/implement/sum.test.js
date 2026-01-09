@@ -36,6 +36,15 @@ describe("Given an array with just 1 number, returns contained number", () => {
 // Given an array containing negative numbers
 // When passed to the sum function
 // Then it should still return the correct total sum
+describe("Given an array with negative elements, return sum of its elements", () =>{
+  [
+    { input: [-2, -1], expected: -3 },
+    { input: [-2, -1, 0, 1], expected: -2 },
+    { input: [-43, 11, 8, 18, -21, 32, -9, 7], expected:  3},
+  ].forEach(({input, expected}) => 
+    it(`Returns the elements sum in [${input}]`, () => expect(sum(input)).toEqual(expected))
+  );
+});
 
 // Given an array with decimal/float numbers
 // When passed to the sum function
