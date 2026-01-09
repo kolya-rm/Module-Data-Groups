@@ -23,6 +23,15 @@ test("given an empty array, returns 0", () => {
 // Given an array with just one number
 // When passed to the sum function
 // Then it should return that number
+describe("Given an array with just 1 number, returns contained number", () => {
+  [
+    { input: [-2], expected: -2 },
+    { input: [0], expected: 0 },
+    { input: [1024], expected: 1024 },
+  ].forEach(({input, expected}) =>
+    it(`Returns the sum of numbers in [${input}]`, () => expect(sum(input)).toEqual(expected))
+  );
+});
 
 // Given an array containing negative numbers
 // When passed to the sum function
