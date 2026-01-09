@@ -76,3 +76,12 @@ describe("Given an array with non-numeric elements, should sum numeric elements"
 // Given an array with only non-number values
 // When passed to the sum function
 // Then it should return the least surprising value given how it behaves for all other inputs
+describe("Given an array with only non-numeric elements, should return 0, like an empty one", () => {
+  [
+    { input: [undefined], expected: 0 },
+    { input: [undefined, null, false], expected: 0 },
+    { input: [{}, undefined, [], true, "four", null, [[],[0, 1]]], expected: 0 },
+  ].forEach(({input, expected}) => 
+    it(`Returns 0 for [${input}]`, () => expect(sum(input)).toEqual(expected))
+  )
+});
