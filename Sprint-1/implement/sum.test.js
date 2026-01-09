@@ -63,6 +63,15 @@ describe("Given a numeric array with decimal elements", () => {
 // Given an array containing non-number values
 // When passed to the sum function
 // Then it should ignore the non-numerical values and return the sum of the numerical elements
+describe("Given an array with non-numeric elements, should sum numeric elements", () => {
+  [
+    { input: [null, 10, undefined, [0, 1], 3], expected: 13 },
+    { input: [12, 4, 8, "seven"], expected: 24 },
+    { input: [null, {name: "Jane", surname: "Dow", age: 36}, false, 5], expected:  5},
+  ].forEach(({input, expected}) => 
+    it(`Returns the numeric elements sum for [${input}]`, () => expect(sum(input)).toEqual(expected))
+  );
+});
 
 // Given an array with only non-number values
 // When passed to the sum function
