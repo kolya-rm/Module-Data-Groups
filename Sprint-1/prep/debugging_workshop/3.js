@@ -5,7 +5,14 @@ resolve the bug.
 */
 
 function calculateAverage(arr) {
-  return arr.reduce((accumulator, currentItem) => accumulator += currentItem, 0);
+  let sum = 0;
+  if (arr.length === 0) {
+    return sum;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum / arr.length;
 }
 
 let arr = [1, 2, 3, 4, 5];
