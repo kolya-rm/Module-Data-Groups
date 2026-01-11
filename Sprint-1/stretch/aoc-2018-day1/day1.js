@@ -1,18 +1,19 @@
 const fs = require('fs');
 const lib = require('./day1_lib.js')
 
-const FILE_PATH = './input/'
+const DIR_NAME = 'input/'
 const FILE_NAME = 'input.txt';
 const FILE_ENCODING = 'utf8';
 
-const frequencyDifferencesList = parseFrequencyDifferencesFile(FILE_NAME, FILE_PATH, FILE_ENCODING);
+const frequencyDifferencesList = parseFrequencyDifferencesFile(FILE_NAME, DIR_NAME, FILE_ENCODING);
 
 console.log(`Resulting frequency is ${lib.calculateResultingFrequency(frequencyDifferencesList)}`);
 console.log(`First repeated frequency is ${lib.findFirstRepeatedFrequency(frequencyDifferencesList)}`);
 
-function parseFrequencyDifferencesFile(fileNameString, pathString, encodingString) {
+function parseFrequencyDifferencesFile(fileName, dirName, encoding) {
   try {
-    const fileContent = fs.readFileSync(pathString + fileNameString, encodingString);
+    const filePath = process.cwd() + '/' + dirName + fileName;
+    const fileContent = fs.readFileSync(filePath, encoding);
 
     return fileContent.split('\n').map(str => Number.parseInt(str));
   } catch (err) {
