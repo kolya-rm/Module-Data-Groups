@@ -8,6 +8,7 @@ function contains(object, key) {
       return true;
     }
   }
+  return false;
 }
 
 module.exports = contains;

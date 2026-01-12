@@ -32,12 +32,20 @@ it("Contains on empty object returns false", () =>
   { input: [{ a: 1, b: 2 }, 'b'], expected: true },
   { input: [{ a: 1, b: 2, c: 3 }, 'a'], expected: true },
 ].forEach(({input, expected}) =>
-  it('Contains on object with existing property name, return true', () => expect(contains(input[0], input[1])).toEqual(expected)
+  it('Contains an object with existing property name, return true', () => expect(contains(input[0], input[1])).toEqual(expected)
 ));
 
 // Given an object with properties
 // When passed to contains with a non-existent property name
 // Then it should return false
+[
+  { input: [{ a: 1 }, "b"], expected: false },
+  { input: [{ a: 1, b: 2 }, "c"], expected: false },
+  { input: [{ a: 1, b: 2, c: 3 }, "age"], expected: false },
+].forEach(({ input, expected }) =>
+  it("Contains an object without existing property name, return false", () =>
+    expect(contains(input[0], input[1])).toEqual(expected))
+);
 
 // Given invalid parameters like an array
 // When passed to contains
