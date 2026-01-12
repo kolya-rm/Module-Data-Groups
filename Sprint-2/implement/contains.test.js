@@ -50,3 +50,11 @@ it("Contains on empty object returns false", () =>
 // Given invalid parameters like an array
 // When passed to contains
 // Then it should return false or throw an error
+[
+  { input: [], expected: false },
+  { input: 'Some string', expected: false },
+  { input: 42, expected: false },
+].forEach(({ input, expected }) =>
+  it("First parameter type isn't object, returns false", () =>
+    expect(() => contains(input[0], input[1])).toThrow(TypeError)
+));
