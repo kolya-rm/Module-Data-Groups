@@ -1,4 +1,10 @@
 // Predict and explain first...
+// this cod below will print out in the console string 'bruschetta serves 2
+//   ingredients: 
+// [object Object]'
+// Because we instead to get ingredients property we are printing the given object.
+// To print ingredients we should access to the property by the name and they get
+// each ingredient by accessing to the array element by the index.
 
 // This program should log out the title, how many it serves and the ingredients.
 // Each ingredient should be logged on a new line
