@@ -20,13 +20,20 @@ as the object doesn't contains a key of 'c'
 // Given an empty object
 // When passed to contains
 // Then it should return false
-it("contains on empty object returns false", () =>
+it("Contains on empty object returns false", () =>
   expect(contains({}, 'a')).toEqual(false)
 );
 
 // Given an object with properties
 // When passed to contains with an existing property name
 // Then it should return true
+[
+  { input: [{ a: 1 }, 'a'], expected: true },
+  { input: [{ a: 1, b: 2 }, 'b'], expected: true },
+  { input: [{ a: 1, b: 2, c: 3 }, 'a'], expected: true },
+].forEach(({input, expected}) =>
+  it('Contains on object with existing property name, return true', () => expect(contains(input[0], input[1])).toEqual(expected)
+));
 
 // Given an object with properties
 // When passed to contains with a non-existent property name
