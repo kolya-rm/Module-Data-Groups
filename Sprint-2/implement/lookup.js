@@ -5,9 +5,12 @@ function createLookup(list) {
   if (list.length === 0) {
     return {};
   }
-  for(const pair in list) {
+  for(const pair of list) {
     if (!Array.isArray(pair)) {
       throw new TypeError('Argument contains non-array elements');
+    }
+    if (pair.length !== 2) {
+      throw new TypeError('Argument contains non-pair elements');
     }
   }
 }
