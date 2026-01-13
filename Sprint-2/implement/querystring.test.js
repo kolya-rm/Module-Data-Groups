@@ -10,3 +10,7 @@ test("parses querystring values containing =", () => {
     "equation": "x=y+1",
   });
 });
+
+test("Parses querystring containing only &", () => {
+  expect(parseQueryString("&&&")).toEqual({});
+});
