@@ -8,13 +8,15 @@ function parseQueryString(queryString) {
   const keyValuePairs = queryString.split("&");
 
   for (const pair of keyValuePairs) {
-    const [key, value] = pair.split(/=(.*)/);
-    if (key != "") {
+    if (pair.indexOf("=") > 0) {
+      const [key, value] = pair.split(/=(.*)/);
       queryParams[key] = value;
     }
   }
 
   return queryParams;
 }
+
+// parseQueryString("&abcde&");
 
 module.exports = parseQueryString;
