@@ -14,3 +14,7 @@ test("parses querystring values containing =", () => {
 test("Parses querystring containing only &", () => {
   expect(parseQueryString("&&&")).toEqual({});
 });
+
+test("Parse querystring value starts with =", () => {
+  expect(parseQueryString("=value")).toEqual({});
+})

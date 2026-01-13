@@ -9,7 +9,9 @@ function parseQueryString(queryString) {
 
   for (const pair of keyValuePairs) {
     const [key, value] = pair.split(/=(.*)/);
-    queryParams[key] = value;
+    if (key != "") {
+      queryParams[key] = value;
+    }
   }
 
   return queryParams;
