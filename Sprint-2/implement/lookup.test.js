@@ -3,7 +3,7 @@ const createLookup = require("./lookup.js");
 describe('Creates a country currency code lookup object for multiple codes given in a pairs array', () => {
   [
     { input: 42},
-    { input: 'Some string'},
+    { input: "Some string"},
     { input: undefined},
     { input: false},
     { input: null},
@@ -42,6 +42,15 @@ describe('Creates a country currency code lookup object for multiple codes given
   ].forEach(({ input }) =>
     it(`Given array contains a pair with non-string elements, throws a TypeError`, () =>
       expect(() => createLookup(input)).toThrow(TypeError))
+  );
+
+  [
+    { input: [["US", "USD"]], expected: {US: "USD"} },
+    { input: [["US", "USD"], ["CA", "CAD"]], expected: {US: "USD", CA: "CAD"} },
+    { input: [["US", "USD"], ["CA", "CAD"], ["UK", "GBP"]], expected: {US: "USD", CA: "CAD", UK: "GBP"}},
+  ].forEach(({ input, expected }) =>
+    it(`Given an array contains pairs of strings, returns an lookup object`, () =>
+      expect(createLookup(input)).toEqual(expected))
   );
 });
 
