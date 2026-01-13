@@ -8,10 +8,21 @@ describe('Creates a country currency code lookup object for multiple codes given
     { input: false},
     { input: null},
   ].forEach(({input})  => 
-    it(`Given a non-array argument (${typeof input}), throw a type error`, () => expect(() => createLookup(input)).toThrow(TypeError))
+    it(`Given a non-array argument (${typeof input}), throw a TypeError`, () => expect(() => createLookup(input)).toThrow(TypeError))
   );
   
-  it(`Given empty array, returns empty object`, () => expect(createLookup([])).toEqual({}))
+  it(`Given empty array, returns empty object`, () => expect(createLookup([])).toEqual({}));
+
+  [
+    { input: null },
+    { input: [[42]] },
+    { input: [["Some string"]] },
+    { input: [["US"], "USD", ["CA", "CAD"], undefined] },
+    { input: [["US", "USD"], null, [], ["CA", "CAD"]] },
+  ].forEach(({ input }) =>
+    it(`Given array contains a non-array elements [${input}], throws a TypeError`, () =>
+      expect(() => createLookup(input)).toThrow(TypeError))
+  );
 });
 
 
