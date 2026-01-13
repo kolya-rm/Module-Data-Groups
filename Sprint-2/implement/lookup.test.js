@@ -8,8 +8,10 @@ describe('Creates a country currency code lookup object for multiple codes given
     { input: false},
     { input: null},
   ].forEach(({input})  => 
-    it('Given not an array, throw a type error', () => expect(() => createLookup(input)).toThrow(TypeError))
-  ) 
+    it(`Given a non-array argument (${typeof input}), throw a type error`, () => expect(() => createLookup(input)).toThrow(TypeError))
+  );
+  
+  it(`Given empty array, returns empty object`, () => expect(createLookup([])).toEqual({}))
 });
 
 

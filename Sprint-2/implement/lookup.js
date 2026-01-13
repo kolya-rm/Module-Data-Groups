@@ -1,7 +1,8 @@
 function createLookup(list) {
-  if (typeof list !== 'array') {
+  if (!Array.isArray(list)) {
     throw new TypeError('Argument is not array');
   }
+  return {};
 }
 
 module.exports = createLookup;
