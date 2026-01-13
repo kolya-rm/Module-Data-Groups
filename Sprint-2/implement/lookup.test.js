@@ -1,6 +1,17 @@
 const createLookup = require("./lookup.js");
 
-test.todo("creates a country currency code lookup for multiple codes");
+describe('Creates a country currency code lookup object for multiple codes given in a pairs array', () => {
+  [
+    { input: 42},
+    { input: 'Some string'},
+    { input: undefined},
+    { input: false},
+    { input: null},
+  ].forEach(({input})  => 
+    it('Given not an array, throw a type error', () => expect(() => createLookup(input)).toThrow(TypeError))
+  ) 
+});
+
 
 /*
 
