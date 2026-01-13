@@ -33,6 +33,16 @@ describe('Creates a country currency code lookup object for multiple codes given
     it(`Given array contains a non-pair elements, throws a TypeError`, () =>
       expect(() => createLookup(input)).toThrow(TypeError))
   );
+
+  [
+    { input: [[42, "CAD"]] },
+    { input: [["Some string", null]] },
+    { input: [["US", "USD"], ["CA", "CAD"], [undefined, "AU"]] },
+    { input: [["US", "USD"], ["UK", true], ["CA", "CAD"]] },
+  ].forEach(({ input }) =>
+    it(`Given array contains a pair with non-string elements, throws a TypeError`, () =>
+      expect(() => createLookup(input)).toThrow(TypeError))
+  );
 });
 
 

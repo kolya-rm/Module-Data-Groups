@@ -12,6 +12,9 @@ function createLookup(list) {
     if (pair.length !== 2) {
       throw new TypeError('Argument contains non-pair elements');
     }
+    if (typeof pair[0] !== 'string' || typeof pair[1] !== 'string') {
+      throw new TypeError(`Pair [${pair}] contains non-string element`);
+    }
   }
 }
 
