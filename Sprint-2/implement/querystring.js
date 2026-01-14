@@ -1,7 +1,7 @@
 function parseQueryString(queryString) {
   const queryParams = {};
   
-  if (queryString.length === 0) {
+  if (typeof queryString !== "string" || queryString.length === 0) {
     return queryParams;
   }
 
@@ -16,7 +16,5 @@ function parseQueryString(queryString) {
 
   return queryParams;
 }
-
-// parseQueryString("&abcde&");
 
 module.exports = parseQueryString;

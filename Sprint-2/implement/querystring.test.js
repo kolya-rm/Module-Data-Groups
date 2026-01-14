@@ -15,10 +15,14 @@ test("Parses querystring containing only &", () => {
   expect(parseQueryString("&&&")).toEqual({});
 });
 
-test("Parse querystring value starts with =", () => {
+test("Parses querystring value starts with =", () => {
   expect(parseQueryString("=value")).toEqual({});
 })
 
-test("Parse querystring value without =", () => {
-  expect(parseQueryString("&string&")).toEqual({});
+test("Parses querystring value without =", () => {
+  expect(parseQueryString("&parameter&")).toEqual({});
+});
+
+test("Avoids to parse non-string input", () => {
+  expect(parseQueryString(null)).toEqual({});
 });
