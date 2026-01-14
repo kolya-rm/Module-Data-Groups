@@ -26,3 +26,7 @@ test("Parses querystring value without =", () => {
 test("Avoids to parse non-string input", () => {
   expect(parseQueryString(null)).toEqual({});
 });
+
+test("Parses empty string", () => {
+  expect(parseQueryString("")).toEqual({});
+});
