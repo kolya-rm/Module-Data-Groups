@@ -11,3 +11,7 @@ test("CountWords on an empty string returns empty object", () => {
 test("CountWords on a low case string separated by spaces returns object with word's count", () => {
   expect(countWords("you and me and you")).toEqual({ you: 2, and: 2, me: 1});
 });
+
+test("CountWords on a string with upper case chars returns object with word's count", () => {
+  expect(countWords("You and me And you")).toEqual({ you: 2, and: 2, me: 1 });
+});
