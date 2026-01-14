@@ -19,3 +19,7 @@ test("CountWords on a string with upper case chars returns object with word's co
 test("CountWords on a string with punctuation returns object with word's count", () => {
   expect(countWords("You, and. me and :you")).toEqual({ you: 2, and: 2, me: 1 });
 });
+
+test("CountWords on a string returns object with order by words count", () => {
+  expect(Object.entries(countWords("You, and. me and :you and me"))).toEqual(Object.entries({ and: 3, you: 2, me: 2 }));
+});

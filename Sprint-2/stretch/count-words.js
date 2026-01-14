@@ -32,15 +32,21 @@ function countWords(str) {
     throw new TypeError("Input is not string");
   }
 
-  const resultObj = {};
+  const tempObj = {};
 
   const words = str.toLowerCase().replace(/[^\w\s]/g, "").split(/\s/).filter(word => word.length > 0);
 
   for (const word of words) {
-    resultObj[word] = resultObj[word] ? resultObj[word] + 1 : 1;
+    tempObj[word] = tempObj[word] ? tempObj[word] + 1 : 1;
   }
+
+  const resultObj = {};
+
+  Object.entries(tempObj).sort((a, b) => b[1] - a[1]).map(entry => resultObj[entry[0]] = entry[1]);
 
   return resultObj;
 }
+
+console.log(countWords("You, and. me and :you and me"));
 
 module.exports = countWords;
