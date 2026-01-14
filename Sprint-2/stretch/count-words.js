@@ -34,7 +34,7 @@ function countWords(str) {
 
   const resultObj = {};
 
-  const words = str.toLowerCase().split(/\s/).filter(word => word.length > 0);
+  const words = str.toLowerCase().replace(/[^\w\s]/g, "").split(/\s/).filter(word => word.length > 0);
 
   for (const word of words) {
     resultObj[word] = resultObj[word] ? resultObj[word] + 1 : 1;
