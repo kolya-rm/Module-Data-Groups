@@ -26,3 +26,15 @@
 
 3. Order the results to find out which word is the most common in the input
 */
+
+function countWords(str) {
+  if (typeof str !== "string") {
+    throw new TypeError("Input is not string");
+  }
+
+  const resultObj = {};
+
+  return resultObj;
+}
+
+module.exports = countWords;
