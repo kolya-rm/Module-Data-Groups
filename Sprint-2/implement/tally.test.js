@@ -40,3 +40,6 @@ test("Tally on an array with duplicate elements returns object contains their co
 // Given an invalid input like a string
 // When passed to tally
 // Then it should throw an error
+test("Tally on a non-array throws error", () => {
+  expect(() => tally("array")).toThrow(TypeError);
+});
