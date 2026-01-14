@@ -34,6 +34,12 @@ function countWords(str) {
 
   const resultObj = {};
 
+  const words = str.split(/\s/).filter(word => word.length > 0);
+
+  for (const word of words) {
+    resultObj[word] = resultObj[word] ? resultObj[word] + 1 : 1;
+  }
+
   return resultObj;
 }
 
