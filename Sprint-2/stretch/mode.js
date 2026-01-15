@@ -9,11 +9,9 @@
 // into smaller functions using the stages above
 
 function calculateMode(list) {
-  // track frequency of each value
-  let freqs = trackFrequencyOfEachValue(list);
+  const valueFrequencyMap = trackFrequencyOfEachValue(list);
 
-  // Find the value with the highest frequency
-  return findValueWithHighestFrequency(freqs);
+  return findValueWithHighestFrequency(valueFrequencyMap);
 }
 
 const trackFrequencyOfEachValue = (list) => {
