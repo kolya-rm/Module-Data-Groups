@@ -13,16 +13,7 @@ function calculateMode(list) {
   let freqs = trackFrequencyOfEachValue(list);
 
   // Find the value with the highest frequency
-  let maxFreq = 0;
-  let mode;
-  for (let [num, freq] of freqs) {
-    if (freq > maxFreq) {
-      mode = num;
-      maxFreq = freq;
-    }
-  }
-
-  return maxFreq === 0 ? NaN : mode;
+  return findValueWithHighestFrequency(freqs);
 }
 
 const trackFrequencyOfEachValue = (list) => {
@@ -36,6 +27,20 @@ const trackFrequencyOfEachValue = (list) => {
   }
 
   return valueFrequencyMap;
+}
+
+const findValueWithHighestFrequency = (valueFrequencyMap) => {
+  let maxFrequency = 0;
+  let mode;
+
+  for (const [value, frequency] of valueFrequencyMap) {
+    if (frequency > maxFrequency) {
+      maxFrequency = frequency;
+      mode = value;
+    }
+  }
+
+  return maxFrequency === 0 ? NaN : mode;
 }
 
 module.exports = calculateMode;
