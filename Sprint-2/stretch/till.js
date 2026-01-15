@@ -8,9 +8,10 @@ function totalTill(till) {
   let total = 0;
 
   for (const [coin, quantity] of Object.entries(till)) {
-    const coinValue = Number.parseInt(coin.replace(/p/, ""));
-
-    total += coinValue * quantity;
+    const coinValue = Number(coin.replace(/p/, ""));
+    if (!Number.isNaN(coinValue)) {
+      total += coinValue * quantity;
+    }
   }
   
   return `£${Math.floor(total / 100) + ("." + total % 100).padEnd(3, "0")}`;
@@ -21,6 +22,7 @@ const till = {
   "5p": 6,
   "50p": 4,
   "20p": 10,
+  "5g": 2,
 };
 const totalAmount = totalTill(till);
 
