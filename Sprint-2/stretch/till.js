@@ -11,7 +11,7 @@ function totalTill(till) {
     total += coin * quantity;
   }
 
-  return `£${total / 100}`;
+  return `£${Math.floor(total / 100) + ("." + total / 100).padEnd(3, "0")}`;
 }
 
 const till = {
@@ -23,7 +23,7 @@ const till = {
 const totalAmount = totalTill(till);
 
 // a) What is the target output when totalTill is called with the till object
-// Target output is '£4.4'.
+// Target output is '£4.40'.
 
 // b) Why do we need to use Object.entries inside the for...of loop in this function?
 // We use Object.entries to iterate over all properties using for...of loop, which iterates over
@@ -33,3 +33,5 @@ const totalAmount = totalTill(till);
 // The expression coin * quantity will evaluate to NaN.
 
 // d) Write a test for this function to check it works and then fix the implementation of totalTill
+
+module.exports = totalTill;
