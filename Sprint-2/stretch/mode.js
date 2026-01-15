@@ -18,10 +18,9 @@ const trackFrequencyOfEachValue = (list) => {
   const valueFrequencyMap = new Map();
 
   for(const value of list) {
-    if (typeof value !== "number") {
-      continue;
+    if (typeof value === "number") {
+      valueFrequencyMap.set(value, (valueFrequencyMap.get(value) || 0) + 1);
     }
-    valueFrequencyMap.set(value, (valueFrequencyMap.get(value) || 0) + 1);
   }
 
   return valueFrequencyMap;
