@@ -8,10 +8,12 @@ function totalTill(till) {
   let total = 0;
 
   for (const [coin, quantity] of Object.entries(till)) {
-    total += coin * quantity;
-  }
+    const coinValue = Number.parseInt(coin.replace(/p/, ""));
 
-  return `£${Math.floor(total / 100) + ("." + total / 100).padEnd(3, "0")}`;
+    total += coinValue * quantity;
+  }
+  
+  return `£${Math.floor(total / 100) + ("." + total % 100).padEnd(3, "0")}`;
 }
 
 const till = {
