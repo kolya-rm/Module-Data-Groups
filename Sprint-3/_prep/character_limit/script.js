@@ -7,6 +7,12 @@ function updateCharacterLimitInfo() {
   characterLimitInfo.innerText = `You have ${characterLimit - textArea.value.length} characters remaining`;
 }
 
+function checkCharacterLimitExcess() {
+  if (textArea.value.length > characterLimit) {
+    textArea.value = textArea.value.substring(0, characterLimit);
+  }
+}
+
 function onWindowLoadFinish() {
   updateCharacterLimitInfo();
 }
