@@ -26,3 +26,27 @@
 
 3. Order the results to find out which word is the most common in the input
 */
+
+function countWords(str) {
+  if (typeof str !== "string") {
+    throw new TypeError("Input is not string");
+  }
+
+  const tempObj = {};
+
+  const words = str.toLowerCase().replace(/[^\w\s]/g, "").split(/\s/).filter(word => word.length > 0);
+
+  for (const word of words) {
+    tempObj[word] = tempObj[word] ? tempObj[word] + 1 : 1;
+  }
+
+  const resultObj = {};
+
+  Object.entries(tempObj).sort((a, b) => b[1] - a[1]).map(entry => resultObj[entry[0]] = entry[1]);
+
+  return resultObj;
+}
+
+console.log(countWords("You, and. me and :you and me"));
+
+module.exports = countWords;

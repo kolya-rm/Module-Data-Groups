@@ -20,16 +20,41 @@ as the object doesn't contains a key of 'c'
 // Given an empty object
 // When passed to contains
 // Then it should return false
-test.todo("contains on empty object returns false");
+it("Contains on empty object returns false", () =>
+  expect(contains({}, 'a')).toEqual(false)
+);
 
 // Given an object with properties
 // When passed to contains with an existing property name
 // Then it should return true
+[
+  { input: [{ a: 1 }, 'a'], expected: true },
+  { input: [{ a: 1, b: 2 }, 'b'], expected: true },
+  { input: [{ a: 1, b: 2, c: 3 }, 'a'], expected: true },
+].forEach(({input, expected}) =>
+  it('Contains an object with existing property name, return true', () => expect(contains(input[0], input[1])).toEqual(expected)
+));
 
 // Given an object with properties
 // When passed to contains with a non-existent property name
 // Then it should return false
+[
+  { input: [{ a: 1 }, "b"], expected: false },
+  { input: [{ a: 1, b: 2 }, "c"], expected: false },
+  { input: [{ a: 1, b: 2, c: 3 }, "age"], expected: false },
+].forEach(({ input, expected }) =>
+  it("Contains an object without existing property name, return false", () =>
+    expect(contains(input[0], input[1])).toEqual(expected))
+);
 
 // Given invalid parameters like an array
 // When passed to contains
 // Then it should return false or throw an error
+[
+  { input: [], expected: false },
+  { input: 'Some string', expected: false },
+  { input: 42, expected: false },
+].forEach(({ input, expected }) =>
+  it("First parameter type isn't object, returns false", () =>
+    expect(() => contains(input[0], input[1])).toThrow(TypeError)
+));

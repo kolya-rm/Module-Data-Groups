@@ -1,6 +1,59 @@
 const createLookup = require("./lookup.js");
 
-test.todo("creates a country currency code lookup for multiple codes");
+describe('Creates a country currency code lookup object for multiple codes given in a pairs array', () => {
+  [
+    { input: 42},
+    { input: "Some string"},
+    { input: undefined},
+    { input: false},
+    { input: null},
+  ].forEach(({input})  => 
+    it(`Given a non-array argument (${typeof input}), throw a TypeError`, () => expect(() => createLookup(input)).toThrow(TypeError))
+  );
+  
+  it(`Given empty array, returns empty object`, () => expect(createLookup([])).toEqual({}));
+
+  [
+    { input: [[], null]},
+    { input: [42] },
+    { input: ["Some string"] },
+    { input: [["US", "USD"], ["CA", "CAD"], undefined] },
+    { input: [["US", "USD"], null, [], ["CA", "CAD"]] },
+  ].forEach(({ input }) =>
+    it(`Given array contains a non-array elements, throws a TypeError`, () =>
+      expect(() => createLookup(input)).toThrow(TypeError))
+  );
+
+  [
+    { input: [[42]] },
+    { input: [["Some string"]] },
+    { input: [["US", "USD"], ["CA", "CAD"], ['AU']] },
+    { input: [["US", "USD"], [], ["CA", "CAD"]] },
+  ].forEach(({ input }) =>
+    it(`Given array contains a non-pair elements, throws a TypeError`, () =>
+      expect(() => createLookup(input)).toThrow(TypeError))
+  );
+
+  [
+    { input: [[42, "CAD"]] },
+    { input: [["Some string", null]] },
+    { input: [["US", "USD"], ["CA", "CAD"], [undefined, "AU"]] },
+    { input: [["US", "USD"], ["UK", true], ["CA", "CAD"]] },
+  ].forEach(({ input }) =>
+    it(`Given array contains a pair with non-string elements, throws a TypeError`, () =>
+      expect(() => createLookup(input)).toThrow(TypeError))
+  );
+
+  [
+    { input: [["US", "USD"]], expected: {US: "USD"} },
+    { input: [["US", "USD"], ["CA", "CAD"]], expected: {US: "USD", CA: "CAD"} },
+    { input: [["US", "USD"], ["CA", "CAD"], ["UK", "GBP"]], expected: {US: "USD", CA: "CAD", UK: "GBP"}},
+  ].forEach(({ input, expected }) =>
+    it(`Given an array contains pairs of strings, returns an lookup object`, () =>
+      expect(createLookup(input)).toEqual(expected))
+  );
+});
+
 
 /*
 

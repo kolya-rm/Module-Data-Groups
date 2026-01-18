@@ -10,3 +10,23 @@ test("parses querystring values containing =", () => {
     "equation": "x=y+1",
   });
 });
+
+test("Parses querystring containing only &", () => {
+  expect(parseQueryString("&&&")).toEqual({});
+});
+
+test("Parses querystring value starts with =", () => {
+  expect(parseQueryString("=value")).toEqual({});
+})
+
+test("Parses querystring value without =", () => {
+  expect(parseQueryString("&parameter&")).toEqual({});
+});
+
+test("Avoids to parse non-string input", () => {
+  expect(parseQueryString(null)).toEqual({});
+});
+
+test("Parses empty string", () => {
+  expect(parseQueryString("")).toEqual({});
+});
