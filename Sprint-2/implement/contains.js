@@ -3,14 +3,7 @@ function contains(object, key) {
     throw new TypeError('The first argument is not an Object');
   }
 
-  const objectKeys = Object.keys(object);
-  
-  for (const currentKey of objectKeys) {
-    if (key === currentKey) {
-      return true;
-    }
-  }
-  return false;
+  return Object.keys(object).includes(key);
 }
 
 module.exports = contains;
