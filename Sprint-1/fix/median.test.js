@@ -33,9 +33,21 @@ describe("calculateMedian", () => {
     expect(list).toEqual([3, 1, 2]);
   });
 
-  [ 'not an array', 123, null, undefined, {}, [], ["apple", null, undefined] ].forEach(val =>
-    it(`returns null for non-numeric array (${val})`, () => expect(calculateMedian(val)).toBe(null))
+  [ 
+    'not an array',
+    123,
+    null,
+    undefined,
+    {}, 
+  ].forEach(val =>
+    it(`Throws TypeError for non-numeric array (${val})`, () => { 
+      expect(() => calculateMedian(val)).toThrow(TypeError);
+    })
   );
+
+  it(`array does not contains numbers returns null`, () =>
+    expect(calculateMedian(["apple", null, undefined])).toBe(null)
+);
 
   [
     { input: [1, 2, "3", null, undefined, 4], expected: 2 },
