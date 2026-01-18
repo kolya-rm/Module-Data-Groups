@@ -7,7 +7,7 @@
 
 function calculateMedian(list) {
   if (!Array.isArray(list)) {
-    return null;
+    throw new TypeError("Argument is not array");
   }
   
   let numberList = list.filter((item) => typeof item === "number");
