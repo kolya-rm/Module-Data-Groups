@@ -1,19 +1,29 @@
 const TIME_MIN = 0;
 const TIME_MAX = 3599;
 
+let time = 0;
+
 onFinishLoading();
 
 function onFinishLoading() {
-  document.getElementById("alarmSet").addEventListener("input", onAlarmSetInput);
+  setupAlarmSetInput();
+}
+
+function setupAlarmSetInput() {
+  const alarmSetInput = document.getElementById("alarmSet");
+  
+  alarmSetInput.addEventListener("input", onAlarmSetInput);
+  alarmSetInput.value = time;
 }
 
 function onAlarmSetInput() {
-  const alarmSet = document.getElementById("alarmSet");
-  if (alarmSet.value < TIME_MIN) {
-    alarmSet.value = TIME_MIN;
+  const alarmSetInput = document.getElementById("alarmSet");
+  
+  if (alarmSetInput.value < TIME_MIN) {
+    alarmSetInput.value = TIME_MIN;
   }
-  if (alarmSet.value > TIME_MAX) {
-    alarmSet.value = TIME_MAX;
+  if (alarmSetInput.value > TIME_MAX) {
+    alarmSetInput.value = TIME_MAX;
   }
 }
  
