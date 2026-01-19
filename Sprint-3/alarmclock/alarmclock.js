@@ -1,3 +1,6 @@
+const SECONDS_IN_MINUTE = 60;
+const PAD_COUNT = 2;
+const PAD_CHAR = "0";
 const TIME_MIN = 0;
 const TIME_MAX = 3599;
 
@@ -7,6 +10,7 @@ onFinishLoading();
 
 function onFinishLoading() {
   setupAlarmSetInput();
+  updateTimerText();
 }
 
 function setupAlarmSetInput() {
@@ -18,13 +22,21 @@ function setupAlarmSetInput() {
 
 function onAlarmSetInput() {
   const alarmSetInput = document.getElementById("alarmSet");
-  
+
   if (alarmSetInput.value < TIME_MIN) {
     alarmSetInput.value = TIME_MIN;
   }
   if (alarmSetInput.value > TIME_MAX) {
     alarmSetInput.value = TIME_MAX;
   }
+}
+
+function updateTimerText() {
+  const timerText = document.getElementById("timeRemaining");
+  const minuteString = Math.floor(time / SECONDS_IN_MINUTE).toString().padStart(PAD_COUNT, PAD_CHAR);
+  const secondString = (time % SECONDS_IN_MINUTE).toString().padStart(PAD_COUNT, PAD_CHAR);
+
+  timerText.innerText = `Time Remaining: ${minuteString}:${secondString}`;
 }
  
 function setAlarm() {}
