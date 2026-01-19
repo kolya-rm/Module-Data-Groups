@@ -39,7 +39,10 @@ function updateTimerText() {
   timerText.innerText = `Time Remaining: ${minuteString}:${secondString}`;
 }
  
-function setAlarm() {}
+function setAlarm() {
+  time = document.getElementById("alarmSet").value;
+  updateTimerText();
+}
 
 // DO NOT EDIT BELOW HERE
 
