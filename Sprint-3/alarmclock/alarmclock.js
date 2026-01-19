@@ -4,9 +4,14 @@ const PAD_CHAR = "0";
 const TIME_MIN = 0;
 const TIME_MAX = 3599;
 const TIMER_INTERVAL_DELAY = 1000;
+const BACKGROUND_COLOR_INTERVAL_DELAY = 250;
+const COLOR_RED = "#FF0000";
+const COLOR_WHITE = "#FFFFFF";
 
 let time = 0;
 let timerIntervalId = null;
+let backgroundColorIntervalId = null;
+let isBackgroundColorWhite = true;
 
 onFinishLoading();
 
@@ -63,11 +68,26 @@ function updateTimer() {
   } else {
     finishTimerUpdateInterval();
     startAlarm();
+    setupBackgroundColorChange();
   }
 }
 
 function startAlarm() {
   playAlarm();
+}
+
+function setupBackgroundColorChange() {
+  backgroundColorIntervalId = setInterval(updateBackgroundColor, BACKGROUND_COLOR_INTERVAL_DELAY);
+}
+
+function updateBackgroundColor() {
+  if (isBackgroundColorWhite) {
+    document.body.style.backgroundColor = COLOR_RED;
+    isBackgroundColorWhite = false;
+  } else {
+    document.body.style.backgroundColor = COLOR_WHITE;
+    isBackgroundColorWhite = true;
+  }
 }
 
 // DO NOT EDIT BELOW HERE
