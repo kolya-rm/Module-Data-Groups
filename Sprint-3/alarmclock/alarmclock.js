@@ -1,3 +1,22 @@
+const TIME_MIN = 0;
+const TIME_MAX = 3599;
+
+onFinishLoading();
+
+function onFinishLoading() {
+  document.getElementById("alarmSet").addEventListener("input", onAlarmSetInput);
+}
+
+function onAlarmSetInput() {
+  const alarmSet = document.getElementById("alarmSet");
+  if (alarmSet.value < TIME_MIN) {
+    alarmSet.value = TIME_MIN;
+  }
+  if (alarmSet.value > TIME_MAX) {
+    alarmSet.value = TIME_MAX;
+  }
+}
+ 
 function setAlarm() {}
 
 // DO NOT EDIT BELOW HERE
