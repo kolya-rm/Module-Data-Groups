@@ -1,5 +1,6 @@
 function onFinishPageLoading() {
   updateQuote();
+  setupButton();
 }
 
 function updateQuote() {
@@ -18,6 +19,10 @@ function setQuote(quote) {
 
   quoteParagraph.innerText = `"${quote.quote}`;
   authorParagraph.innerText = quote.author;
+}
+
+function setupButton() {
+  document.getElementById("new-quote").addEventListener("click", updateQuote);
 }
 
 // DO NOT EDIT BELOW HERE
