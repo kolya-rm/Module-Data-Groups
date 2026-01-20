@@ -1,3 +1,25 @@
+function onFinishPageLoading() {
+  updateQuote();
+}
+
+function updateQuote() {
+  const quote = getRandomQuote(quotes);
+  setQuote(quote);
+}
+
+function getRandomQuote(array) {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
+}
+
+function setQuote(quote) {
+  const quoteParagraph = document.getElementById("quote");
+  const authorParagraph = document.getElementById("author");
+
+  quoteParagraph.innerText = `"${quote.quote}`;
+  authorParagraph.innerText = quote.author;
+}
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
@@ -491,3 +513,5 @@ const quotes = [
 ];
 
 // call pickFromArray with the quotes array to check you get a random quote
+
+onFinishPageLoading();
