@@ -16,8 +16,19 @@ let isBackgroundColorWhite = true;
 onFinishLoading();
 
 function onFinishLoading() {
+  setupPauseButton();
   setupAlarmSetInput();
   updateTimerText();
+}
+
+function setupPauseButton() {
+  document
+    .getElementById("pause")
+    .addEventListener("click", onClickPauseButton);
+}
+
+function onClickPauseButton() {
+  console.log("Pause button clicked");
 }
 
 function setupAlarmSetInput() {
