@@ -1,1 +1,55 @@
 /** Write your CSS in here **/
+:root {
+  --primary-color: orange;
+  --secondary-color: white;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.quote-card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 150px;
+  width: 70%;
+  height: 400px;
+  background-color: var(--secondary-color);
+}
+
+.quote-text {
+  display: flex;
+  color: var(--primary-color);
+  font-size: 35px;
+  width: 80%;
+}
+
+.quote-author {
+  font-size: 20px;
+  text-align: right;
+  color: var(--primary-color);
+  width: 80%;
+}
+
+.btn-new {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  width: 80%;
+}
+
+#new-quote {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border: 0px;
+  font-size: 15px;
+  height: 30px;
+  width: 100px;
+}
