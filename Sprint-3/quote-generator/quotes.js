@@ -1,6 +1,11 @@
+const AUTOPLAY_INTERVAL_DELAY = 60000;
+
+let autoplayIntervalId = null;
+
 function onFinishPageLoading() {
   updateQuote();
   setupButton();
+  setupCheckBox();
 }
 
 function updateQuote() {
@@ -23,6 +28,23 @@ function setQuote(quote) {
 
 function setupButton() {
   document.getElementById("new-quote").addEventListener("click", updateQuote);
+}
+
+function setupCheckBox() {
+  document.getElementById("auto-play").addEventListener("change", onAutoPlayCheckBoxChange);
+}
+
+function onAutoPlayCheckBoxChange() {
+  const autoPlayCheckBox = document.getElementById("auto-play");
+  const autoPlayLabel = document.getElementById("auto-play-label");
+  if (autoPlayCheckBox.checked) {
+    autoPlayLabel.textContent = "AutoPlay: ON";
+    autoplayIntervalId = setInterval(updateQuote, AUTOPLAY_INTERVAL_DELAY);
+  } else {
+    autoPlayLabel.textContent = "AutoPlay: OFF";
+    clearInterval(autoplayIntervalId);
+    autoplayIntervalId = null;
+  }
 }
 
 // DO NOT EDIT BELOW HERE
