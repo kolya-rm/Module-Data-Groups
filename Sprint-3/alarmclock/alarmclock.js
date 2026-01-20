@@ -22,13 +22,17 @@ function onFinishLoading() {
 }
 
 function setupPauseButton() {
-  document
-    .getElementById("pause")
-    .addEventListener("click", onClickPauseButton);
+  document.getElementById("pause").addEventListener("click", onClickPauseButton);
 }
 
 function onClickPauseButton() {
-  console.log("Pause button clicked");
+  if (time > 0) {
+    if (timerIntervalId !== null) {
+      finishTimerUpdateInterval();
+    } else {
+      startTimerUpdateInterval();
+    }
+  }
 }
 
 function setupAlarmSetInput() {
@@ -61,15 +65,16 @@ function setAlarm() {
   time = document.getElementById("alarmSet").value;
   updateTimerText();
   finishTimerUpdateInterval();
-  setupTimerUpdateInterval();
+  startTimerUpdateInterval();
 }
 
-function setupTimerUpdateInterval() {
+function startTimerUpdateInterval() {
   timerIntervalId = setInterval(updateTimer, TIMER_INTERVAL_DELAY);
 }
 
 function finishTimerUpdateInterval() {
   clearInterval(timerIntervalId);
+  timerIntervalId = null;
 }
 
 function updateTimer() {
