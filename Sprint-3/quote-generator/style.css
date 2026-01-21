@@ -44,15 +44,16 @@ body {
   align-items: center;
   justify-content: end;
   width: 80%;
+  height: 100px;
 }
 
 #new-quote {
   color: var(--secondary-color);
   background-color: var(--primary-color);
   border: 0px;
-  font-size: 15px;
-  height: 30px;
-  width: 100px;
+  font-size: 20px;
+  height: 50px;
+  width: 150px;
 }
 
 .quote-auto-play {

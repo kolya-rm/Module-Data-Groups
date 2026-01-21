@@ -10,6 +10,7 @@ function onFinishPageLoading() {
 
 function updateQuote() {
   const quote = getRandomQuote(quotes);
+  
   setQuote(quote);
 }
 
@@ -37,6 +38,7 @@ function setupCheckBox() {
 function onAutoPlayCheckBoxChange() {
   const autoPlayCheckBox = document.getElementById("auto-play");
   const autoPlayLabel = document.getElementById("auto-play-label");
+
   if (autoPlayCheckBox.checked) {
     autoPlayLabel.textContent = "AutoPlay: ON";
     autoplayIntervalId = setInterval(updateQuote, AUTOPLAY_INTERVAL_DELAY);
