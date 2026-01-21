@@ -1,3 +1,54 @@
+const AUTOPLAY_INTERVAL_DELAY = 60000;
+
+let autoplayIntervalId = null;
+
+function onFinishPageLoading() {
+  updateQuote();
+  setupButton();
+  setupCheckBox();
+}
+
+function updateQuote() {
+  const quote = getRandomQuote(quotes);
+  
+  setQuote(quote);
+}
+
+function getRandomQuote(array) {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
+}
+
+function setQuote(quote) {
+  const quoteParagraph = document.getElementById("quote");
+  const authorParagraph = document.getElementById("author");
+
+  quoteParagraph.innerText = `"${quote.quote}`;
+  authorParagraph.innerText = quote.author;
+}
+
+function setupButton() {
+  document.getElementById("new-quote").addEventListener("click", updateQuote);
+}
+
+function setupCheckBox() {
+  document.getElementById("auto-play").addEventListener("change", onAutoPlayCheckBoxChange);
+}
+
+function onAutoPlayCheckBoxChange() {
+  const autoPlayCheckBox = document.getElementById("auto-play");
+  const autoPlayLabel = document.getElementById("auto-play-label");
+
+  if (autoPlayCheckBox.checked) {
+    autoPlayLabel.textContent = "AutoPlay: ON";
+    autoplayIntervalId = setInterval(updateQuote, AUTOPLAY_INTERVAL_DELAY);
+  } else {
+    autoPlayLabel.textContent = "AutoPlay: OFF";
+    clearInterval(autoplayIntervalId);
+    autoplayIntervalId = null;
+  }
+}
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
@@ -491,3 +542,5 @@ const quotes = [
 ];
 
 // call pickFromArray with the quotes array to check you get a random quote
+
+onFinishPageLoading();
