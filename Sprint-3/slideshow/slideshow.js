@@ -24,23 +24,23 @@ function onFinishLoad() {
 }
 
 function setupAutoBackwardBtn() {
-    document.getElementById("auto-backward-btn").addEventListener("click", onAutoBackwardBtnClick);
+    document.getElementById("auto-backward-btn").addEventListener("click", onClickAutoBackwardBtn);
 }
 
 function setupBackwardBtn() {
-    document.getElementById("backward-btn").addEventListener("click", onBackwardBtnClick);
+    document.getElementById("backward-btn").addEventListener("click", onClickBackwardBtn);
 }
 
 function setupStopBtn() {
-    document.getElementById("stop-btn").addEventListener("click", onStopBtnClick);
+    document.getElementById("stop-btn").addEventListener("click", onClickStopBtn);
 }
 
 function setupForwardBtn() {
-    document.getElementById("forward-btn").addEventListener("click", onForwardBtnClick);
+    document.getElementById("forward-btn").addEventListener("click", onClickForwardBtn);
 }
 
 function setupAutoForwardBtn() {
-    document.getElementById("auto-forward-btn").addEventListener("click", onAutoForwardBtnClick);
+    document.getElementById("auto-forward-btn").addEventListener("click", onClickAutoForwardBtn);
 }
 
 function setupFirstImage() {
@@ -48,27 +48,27 @@ function setupFirstImage() {
     setImage();
 }
 
-function onAutoBackwardBtnClick() {
+function onClickAutoBackwardBtn() {
     imageIndexDelta = -1;
     clearAutoInterval();
     setAutoInterval();
 }
 
-function onBackwardBtnClick() {
+function onClickBackwardBtn() {
     imageIndexDelta = -1;
     changeImage();
 }
 
-function onStopBtnClick() {
+function onClickStopBtn() {
     clearAutoInterval();
 }
 
-function onForwardBtnClick() {
+function onClickForwardBtn() {
     imageIndexDelta = 1;
     changeImage();
 }
 
-function onAutoForwardBtnClick() {
+function onClickAutoForwardBtn() {
     imageIndexDelta = 1;
     clearAutoInterval();
     setAutoInterval();
