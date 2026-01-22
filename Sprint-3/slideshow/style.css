@@ -24,8 +24,8 @@
 
 .button-container {
   display: flex;
-  width: 12%;
+  width: 30%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 30px;
 }
