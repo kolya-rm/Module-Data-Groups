@@ -1,12 +1,15 @@
 const images = [
-    "./assets/cute-cat-a.png",
+     "./assets/cute-cat-a.png",
     "./assets/cute-cat-b.jpg",
     "./assets/cute-cat-c.jpg",
+    "./assets/cute-cat-d.png",
+    "./assets/cute-cat-e.png",
+    "./assets/cute-cat-f.png",
 ];
 
 
 // Write your code here
-const AUTO_INTERVAL_DELAY = 1000;
+const AUTO_INTERVAL_DELAY = 5000;
 
 let imageIndex = 0;
 let imageIndexDelta = 1;
