@@ -6,3 +6,20 @@ const images = [
 
 
 // Write your code here
+let imageIndex = 0;
+
+onFinishLoad();
+
+function onFinishLoad() {
+    setupFirstImage();
+}
+
+function setupFirstImage() {
+    imageIndex = Math.floor(Math.random() * images.length);
+    setImage();
+}
+
+function setImage() {
+    const image = document.getElementById("carousel-img");
+    image.src = images[imageIndex];
+}
