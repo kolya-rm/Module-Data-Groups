@@ -11,7 +11,12 @@ let imageIndex = 0;
 onFinishLoad();
 
 function onFinishLoad() {
+    setupForwardBtn();
     setupFirstImage();
+}
+
+function setupForwardBtn() {
+    document.getElementById("forward-btn").addEventListener("click", onForwardBtnClick);
 }
 
 function setupFirstImage() {
@@ -19,7 +24,19 @@ function setupFirstImage() {
     setImage();
 }
 
+function onForwardBtnClick() {
+    imageIndex++;
+    checkImageIndex();
+    setImage();
+}
+
 function setImage() {
     const image = document.getElementById("carousel-img");
     image.src = images[imageIndex];
+}
+
+function checkImageIndex() {
+    if (imageIndex === images.length) {
+        imageIndex = 0;
+    }
 }
