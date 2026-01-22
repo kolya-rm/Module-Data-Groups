@@ -7,11 +7,13 @@ const images = [
 
 // Write your code here
 let imageIndex = 0;
+let imageIndexDelta = 1;
 
 onFinishLoad();
 
 function onFinishLoad() {
     setupForwardBtn();
+    setupBackwardBtn();
     setupFirstImage();
 }
 
@@ -19,13 +21,27 @@ function setupForwardBtn() {
     document.getElementById("forward-btn").addEventListener("click", onForwardBtnClick);
 }
 
+function setupBackwardBtn() {
+    document.getElementById("backward-btn").addEventListener("click", onBackwardBtnClick);
+}
+
 function setupFirstImage() {
-    imageIndex = Math.floor(Math.random() * images.length);
+    imageIndex = Math.floor(Math.random() * images.length); 
     setImage();
 }
 
 function onForwardBtnClick() {
-    imageIndex++;
+    imageIndexDelta = 1;
+    changeImageOnClick();
+}
+
+function onBackwardBtnClick() {
+    imageIndexDelta = -1;
+    changeImageOnClick();
+}
+
+function changeImageOnClick() {
+    imageIndex += imageIndexDelta;
     checkImageIndex();
     setImage();
 }
@@ -38,5 +54,8 @@ function setImage() {
 function checkImageIndex() {
     if (imageIndex === images.length) {
         imageIndex = 0;
+    }
+    if (imageIndex === -1) {
+        imageIndex = images.length - 1;
     }
 }
