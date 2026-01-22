@@ -6,23 +6,31 @@ const images = [
 
 
 // Write your code here
+const AUTO_INTERVAL_DELAY = 1000;
+
 let imageIndex = 0;
 let imageIndexDelta = 1;
+let autoIntervalId = null;
 
 onFinishLoad();
 
 function onFinishLoad() {
-    setupForwardBtn();
     setupBackwardBtn();
+    setupForwardBtn();
+    setupAutoForwardBtn();
     setupFirstImage();
-}
-
-function setupForwardBtn() {
-    document.getElementById("forward-btn").addEventListener("click", onForwardBtnClick);
 }
 
 function setupBackwardBtn() {
     document.getElementById("backward-btn").addEventListener("click", onBackwardBtnClick);
+}
+
+function setupForwardBtn() {
+  document.getElementById("forward-btn").addEventListener("click", onForwardBtnClick);
+}
+
+function setupAutoForwardBtn() {
+    document.getElementById("auto-forward-btn").addEventListener("click", onAutoForwardBtnClick);
 }
 
 function setupFirstImage() {
@@ -30,20 +38,35 @@ function setupFirstImage() {
     setImage();
 }
 
+function onBackwardBtnClick() {
+  imageIndexDelta = -1;
+  changeImage();
+}
+
 function onForwardBtnClick() {
     imageIndexDelta = 1;
-    changeImageOnClick();
+    changeImage();
 }
 
-function onBackwardBtnClick() {
-    imageIndexDelta = -1;
-    changeImageOnClick();
+function onAutoForwardBtnClick() {
+    imageIndexDelta = 1;
+    clearAutoInterval();
+    setAutoInterval();
 }
 
-function changeImageOnClick() {
+function changeImage() {
     imageIndex += imageIndexDelta;
     checkImageIndex();
     setImage();
+}
+
+function clearAutoInterval() {
+    clearInterval(autoIntervalId);
+    autoIntervalId = null;
+}
+
+function setAutoInterval() {
+    autoIntervalId = setInterval(changeImage, AUTO_INTERVAL_DELAY);
 }
 
 function setImage() {
