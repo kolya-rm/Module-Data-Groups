@@ -17,6 +17,7 @@ onFinishLoad();
 function onFinishLoad() {
     setupAutoBackwardBtn();
     setupBackwardBtn();
+    setupStopBtn();
     setupForwardBtn();
     setupAutoForwardBtn();
     setupFirstImage();
@@ -28,6 +29,10 @@ function setupAutoBackwardBtn() {
 
 function setupBackwardBtn() {
     document.getElementById("backward-btn").addEventListener("click", onBackwardBtnClick);
+}
+
+function setupStopBtn() {
+    document.getElementById("stop-btn").addEventListener("click", onStopBtnClick);
 }
 
 function setupForwardBtn() {
@@ -52,6 +57,10 @@ function onAutoBackwardBtnClick() {
 function onBackwardBtnClick() {
     imageIndexDelta = -1;
     changeImage();
+}
+
+function onStopBtnClick() {
+    clearAutoInterval();
 }
 
 function onForwardBtnClick() {
@@ -82,7 +91,6 @@ function setAutoInterval() {
 
 function setImage() {
     const image = document.getElementById("carousel-img");
-    console.log(imageIndex);
     image.src = images[imageIndex];
 }
 
