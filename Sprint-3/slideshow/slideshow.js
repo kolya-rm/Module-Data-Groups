@@ -35,8 +35,8 @@ function setupDelayTime() {
 }
 
 function setupFirstImage() {
-  imageIndex = Math.floor(Math.random() * images.length);
-  setImage();
+    imageIndex = Math.floor(Math.random() * images.length);
+    setImage();
 }
 
 function setupAutoBackwardBtn() {
@@ -121,18 +121,18 @@ function setAutoInterval() {
 }
 
 function changeImage() {
-  imageIndex += imageIndexDelta;
-  checkImageIndex();
-  setImage();
+    imageIndex += imageIndexDelta;
+    checkImageIndex();
+    setImage();
 }
 
 function checkImageIndex() {
-  if (imageIndex === images.length) {
-    imageIndex = 0;
-  }
-  if (imageIndex === -1) {
-    imageIndex = images.length - 1;
-  }
+    if (imageIndex === images.length) {
+        imageIndex = 0;
+    }
+    if (imageIndex === -1) {
+        imageIndex = images.length - 1;
+    }
 }
 
 function setImage() {
