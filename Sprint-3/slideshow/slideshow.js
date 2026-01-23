@@ -78,6 +78,7 @@ function onClickAutoBackwardBtn() {
 
 function onClickBackwardBtn() {
     imageIndexDelta = -1;
+    clearAutoInterval();
     changeImage();
 }
 
@@ -87,6 +88,7 @@ function onClickStopBtn() {
 
 function onClickForwardBtn() {
     imageIndexDelta = 1;
+    clearAutoInterval();
     changeImage();
 }
 
