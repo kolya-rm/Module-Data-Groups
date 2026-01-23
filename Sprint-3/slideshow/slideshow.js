@@ -27,6 +27,7 @@ function onFinishLoad() {
     setupForwardBtn();
     setupAutoForwardBtn();
     setupDelayInput();
+    setupDelaySetBtn();
 }
 
 function setupDelayTime() {
@@ -60,6 +61,10 @@ function setupAutoForwardBtn() {
 
 function setupDelayInput() {
     document.getElementById("delay-input").addEventListener("input", onInputDelayInput);
+}
+
+function setupDelaySetBtn() {
+    document.getElementById("delay-set-btn").addEventListener("click", onClickDelaySetBtn);
 }
 // endregion
 
@@ -101,6 +106,11 @@ function onInputDelayInput() {
     if (delayInput.value < 1) {
         delayInput.value = 1;
     }
+}
+
+function onClickDelaySetBtn() {
+    clearAutoInterval();
+    delayTime = document.getElementById("delay-input").value * SECOND_MULTIPLIER;
 }
 // endregion
 
