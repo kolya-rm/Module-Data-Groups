@@ -9,8 +9,9 @@ const images = [
 
 
 // Write your code here
-const AUTO_INTERVAL_DELAY = 5000;
+const SECOND_MULTIPLIER = 1000;
 
+let delayTime = 1;
 let imageIndex = 0;
 let imageIndexDelta = 1;
 let autoIntervalId = null;
@@ -18,6 +19,7 @@ let autoIntervalId = null;
 
 // region setup
 function onFinishLoad() {
+    setupDelayTime();
     setupFirstImage();
     setupAutoBackwardBtn();
     setupBackwardBtn();
@@ -25,6 +27,10 @@ function onFinishLoad() {
     setupForwardBtn();
     setupAutoForwardBtn();
     setupDelayInput();
+}
+
+function setupDelayTime() {
+    delayTime = document.getElementById("delay-input").defaultValue * SECOND_MULTIPLIER;
 }
 
 function setupFirstImage() {
@@ -101,7 +107,7 @@ function onInputDelayInput() {
 
 // region inner logic
 function setAutoInterval() {
-    autoIntervalId = setInterval(changeImage, AUTO_INTERVAL_DELAY);
+    autoIntervalId = setInterval(changeImage, delayTime);
 }
 
 function changeImage() {
