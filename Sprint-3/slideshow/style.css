@@ -1,1 +1,31 @@
 /** Write your CSS in here **/
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.image-container {
+  display: flex;
+  width: 50%;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border: 2px solid lightgray;
+}
+
+#carousel-img {
+  width: 600px;
+}
+
+.button-container {
+  display: flex;
+  width: 30%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px;
+}
