@@ -15,13 +15,21 @@ let imageIndex = 0;
 let imageIndexDelta = 1;
 let autoIntervalId = null;
 
+
+// region setup
 function onFinishLoad() {
+    setupFirstImage();
     setupAutoBackwardBtn();
     setupBackwardBtn();
     setupStopBtn();
     setupForwardBtn();
     setupAutoForwardBtn();
-    setupFirstImage();
+    setupDelayInput();
+}
+
+function setupFirstImage() {
+  imageIndex = Math.floor(Math.random() * images.length);
+  setImage();
 }
 
 function setupAutoBackwardBtn() {
@@ -44,11 +52,13 @@ function setupAutoForwardBtn() {
     document.getElementById("auto-forward-btn").addEventListener("click", onClickAutoForwardBtn);
 }
 
-function setupFirstImage() {
-    imageIndex = Math.floor(Math.random() * images.length); 
-    setImage();
+function setupDelayInput() {
+    document.getElementById("delay-input").addEventListener("input", onInputDelayInput);
 }
+// endregion
 
+
+// region listeners
 function onClickAutoBackwardBtn() {
     imageIndexDelta = -1;
     clearAutoInterval();
@@ -80,6 +90,16 @@ function clearAutoInterval() {
     autoIntervalId = null;
 }
 
+function onInputDelayInput() {
+    const delayInput = document.getElementById("delay-input");
+    if (delayInput.value < 1) {
+        delayInput.value = 1;
+    }
+}
+// endregion
+
+
+// region inner logic
 function setAutoInterval() {
     autoIntervalId = setInterval(changeImage, AUTO_INTERVAL_DELAY);
 }
@@ -103,5 +123,7 @@ function setImage() {
     const image = document.getElementById("carousel-img");
     image.src = images[imageIndex];
 }
+// endregion
+
 
 document.onFinishLoad = onFinishLoad();
