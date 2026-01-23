@@ -15,8 +15,6 @@ let imageIndex = 0;
 let imageIndexDelta = 1;
 let autoIntervalId = null;
 
-onFinishLoad();
-
 function onFinishLoad() {
     setupAutoBackwardBtn();
     setupBackwardBtn();
@@ -77,12 +75,6 @@ function onClickAutoForwardBtn() {
     setAutoInterval();
 }
 
-function changeImage() {
-    imageIndex += imageIndexDelta;
-    checkImageIndex();
-    setImage();
-}
-
 function clearAutoInterval() {
     clearInterval(autoIntervalId);
     autoIntervalId = null;
@@ -92,16 +84,24 @@ function setAutoInterval() {
     autoIntervalId = setInterval(changeImage, AUTO_INTERVAL_DELAY);
 }
 
+function changeImage() {
+  imageIndex += imageIndexDelta;
+  checkImageIndex();
+  setImage();
+}
+
+function checkImageIndex() {
+  if (imageIndex === images.length) {
+    imageIndex = 0;
+  }
+  if (imageIndex === -1) {
+    imageIndex = images.length - 1;
+  }
+}
+
 function setImage() {
     const image = document.getElementById("carousel-img");
     image.src = images[imageIndex];
 }
 
-function checkImageIndex() {
-    if (imageIndex === images.length) {
-        imageIndex = 0;
-    }
-    if (imageIndex === -1) {
-        imageIndex = images.length - 1;
-    }
-}
+document.onFinishLoad = onFinishLoad();
