@@ -96,11 +96,6 @@ function onClickAutoForwardBtn() {
     setAutoInterval();
 }
 
-function clearAutoInterval() {
-    clearInterval(autoIntervalId);
-    autoIntervalId = null;
-}
-
 function onInputDelayInput() {
     const delayInput = document.getElementById("delay-input");
     if (delayInput.value < 1) {
@@ -118,6 +113,11 @@ function onClickDelaySetBtn() {
 // region inner logic
 function setAutoInterval() {
     autoIntervalId = setInterval(changeImage, delayTime);
+}
+
+function clearAutoInterval() {
+    clearInterval(autoIntervalId);
+    autoIntervalId = null;
 }
 
 function changeImage() {
